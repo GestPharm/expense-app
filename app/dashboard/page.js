@@ -28,7 +28,7 @@ export default function Dashboard() {
 
       {expenses.map((e) => (
         <div key={e.id}>
-          {e.amount} € - {e.description}
+          {e.amount} € - {e.description} - {e.status}
         </div>
       ))}
     </div>

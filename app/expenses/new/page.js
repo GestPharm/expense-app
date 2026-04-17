@@ -16,9 +16,16 @@ export default function NewExpense() {
       return;
     }
 
-    await supabase.from('expenses').insert([
+    const { data: member } = await supabase
+  .from('members')
+  .select('organization_id')
+  .eq('user_id', user.id)
+  .single();
+
+   await supabase.from('expenses').insert([
       {
-        user_id: user.user.id,
+        user_id: user.id,
+        organization_id: member.organization_id,
         amount,
         description
       }
