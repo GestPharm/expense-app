@@ -5,4 +5,5 @@ export type Expense = {
   status: 'pending' | 'approved' | 'rejected';
   organization_id: string;
   user_id: string;
+  receipt_url: string;
 };
