@@ -24,6 +24,17 @@ export default function Login() {
 
     const user = data.user; // ✅ IMPORTANT
 
+    const { data: member } = await supabase
+  .from('members')
+  .select('*')
+  .eq('user_id', user.id)
+  .single();
+
+if (member.must_change_password) {
+  router.push('/change-password');
+  return;
+}
+
 
     // 🔥 onboarding automatique
   await ensureUserOrganization(user);
